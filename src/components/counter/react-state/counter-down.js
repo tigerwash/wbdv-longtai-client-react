@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CounterUp = ({up}) =>
-    <button onClick={up}>
-        Up
+const CounterDown = ({down}) =>
+    <button onClick={down}>
+        Down
     </button>
 
 
-export default CounterUp
+export default CounterDown
