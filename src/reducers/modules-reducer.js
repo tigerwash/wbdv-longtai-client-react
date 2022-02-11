@@ -1,27 +1,33 @@
 const initialState = {
     modules: [
-        {_id: 123, title: "Module 121"},
-        {_id: 332, title: "Module 332"},
-        {_id: 113, title: "Module 113"},
+        // {_id: 123, title: "Module 121"},
+        // {_id: 332, title: "Module 332"},
+        // {_id: 113, title: "Module 113"},
     ]
 }
 
 const moduleReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "FIND_MODULE_FOR_COURSE":
+            return {
+                ...state,
+                modules: action.modules
+            }
         case "CREATE_MODULE":
             // alert("Create Module 777")
             const newState = {
                 modules: [
                     ...state.modules,
-                    {
-                        title: "new module",
-                        _id: (new Date()).getTime()
-                    }
+                    action.module
+                    // {
+                    //     title: "new module",
+                    //     _id: (new Date()).getTime()
+                    // }
                 ]
             }
             return newState
         case "DELETE_MODULE":
-            alert("delete the module" + action.moduleToDelete.title)
+            // alert("delete the module" + action.moduleToDelete.title)
             const newState1 = {
                 modules: state.modules.filter(module => {
                     if(module._id === action.moduleToDelete._id){
@@ -32,8 +38,10 @@ const moduleReducer = (state = initialState, action) => {
                 })
             }
             return newState1
+        // todo: update 送过去server 没有问题， 回来fetch 有问题
         case "UPDATE_MODULE":
             return {
+                ...state,
                 modules: state.modules.map(m => {
                     if(m._id === action.action._id) {
                         return action.module
