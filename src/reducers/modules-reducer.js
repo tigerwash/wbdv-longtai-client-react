@@ -38,12 +38,11 @@ const moduleReducer = (state = initialState, action) => {
                 })
             }
             return newState1
-        // todo: update 送过去server 没有问题， 回来fetch 有问题
         case "UPDATE_MODULE":
             return {
-                ...state,
+                // ...state,
                 modules: state.modules.map(m => {
-                    if(m._id === action.action._id) {
+                    if(m._id === action.module._id) {
                         return action.module
                     } else {
                         return m
